@@ -8,7 +8,7 @@ public class drawingEngine
   {
     for (int i = 0; i < quikDraw.lines; i++)
     {
-      g.drawLine(quikDraw.linePos[i][0], quikDraw.linePos[i][1], quikDraw.linePos[i][2], quikDraw.linePos[i][3]);
+      g.drawLine(50, 100, 150, 100);
     }
   }
 }
