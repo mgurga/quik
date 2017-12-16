@@ -1,5 +1,7 @@
 package quik.quikDraw;
 
+import java.awt.Graphics;
+
 import javax.swing.JFrame;
 
 public class quikDraw
@@ -33,7 +35,6 @@ public class quikDraw
         quikDraw.height = height;
         quikDraw.width = width;
         windowName = name;
-        windowInitialized = true;
         initializeWindow();
       }
       System.out.println("Window initialized with width of " + width + " and height of " + height
@@ -47,16 +48,12 @@ public class quikDraw
   }
   public static void main(String[] args)
   {
-    if (windowInitialized == true)
-    {
-      for (;;)
-      {
-        window.repaint();
-      }
-    }
+	  
   }
   private void initializeWindow()
   {
+	  windowInitialized = true;
+	  window.getContentPane().add(new drawingEngine());
     window = new JFrame(windowName);
     window.setSize(height, width);
     window.setVisible(true);
@@ -69,5 +66,8 @@ public class quikDraw
     linePos[lines][1] = y1;
     linePos[lines][2] = x2;
     linePos[lines][3] = y2;
+  }
+  public void paint(Graphics g) {
+	  g.drawLine(10, 10, 200, 300);
   }
 }

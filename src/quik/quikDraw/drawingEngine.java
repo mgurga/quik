@@ -2,13 +2,12 @@ package quik.quikDraw;
 
 import java.awt.Graphics;
 
-public class drawingEngine
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class drawingEngine extends JPanel
 {
-  public void paint(Graphics g)
-  {
-    for (int i = 0; i < quikDraw.lines; i++)
-    {
-      g.drawLine(50, 100, 150, 100);
-    }
-  }
+	public void paint(Graphics g){
+		g.drawRect(10, 10, 100, 100);	
+	}
 }
