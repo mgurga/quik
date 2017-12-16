@@ -1,10 +1,13 @@
 package quik.quikDraw;
 
+import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
-public class quikDraw
+public class quikDraw extends JPanel
 {
   static JFrame  window;
   static int     height            = -1;
@@ -52,8 +55,7 @@ public class quikDraw
   }
   private void initializeWindow()
   {
-	  windowInitialized = true;
-	  window.getContentPane().add(new drawingEngine());
+	windowInitialized = true;
     window = new JFrame(windowName);
     window.setSize(height, width);
     window.setVisible(true);
@@ -67,7 +69,9 @@ public class quikDraw
     linePos[lines][2] = x2;
     linePos[lines][3] = y2;
   }
-  public void paint(Graphics g) {
-	  g.drawLine(10, 10, 200, 300);
-  }
+  
+  public void paint(Graphics g){
+		g.drawRect(10, 10, 100, 100);	
+	  
+	}
 }
