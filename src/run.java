@@ -7,8 +7,8 @@ public class run extends quikDraw
   {
     quikDraw qD = new quikDraw();
     qD.setWindow(800, 600, "quik");
-    qD.newLine(50, 100, 150, 100);
-    qD.newRect(20, 20, 100, 100);
+    qD.drawLine(50, 100, 150, 100);
+    qD.drawRect(20, 20, 100, 100);
     
   }
 }

@@ -101,10 +101,17 @@ public class quikDraw extends Canvas
   }
   
   public void backgroundColor(int r, int g, int b) {
-	  
+	  Color newBKColor = new Color(r,g,b);
+	  window.getContentPane().setBackground(newBKColor);
+  }
+  
+  public void backgroundColor(int rgb) {
+	  Color newBKColor = new Color(rgb,rgb,rgb);
+	  window.getContentPane().setBackground(newBKColor);
   }
   
   public void paint(Graphics g){
+	  	
 		for(int i = 0; i < lines+1; i++) {
 			g.drawLine(linePos[i][0], linePos[i][1], linePos[i][2], linePos[i][3]);
 		}

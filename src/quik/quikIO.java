@@ -2,6 +2,8 @@ package quik;
 
 import java.awt.Image;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -60,6 +62,10 @@ public class quikIO {
 		
 		return image.getScaledInstance(resizex, resizey, Image.SCALE_DEFAULT);
 		
+	}
+	
+	public String[] loadTextFile(String path) throws FileNotFoundException {
+		return null;
 	}
 	
 }
