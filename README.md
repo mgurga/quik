@@ -38,5 +38,43 @@ below are all the methods for all the sub sections of quik:<br /><br />
 }
 <br />
 
+**backgroundColor(int r, int g, int b)**<br />
+{<br />
+**r** - red value of background color <br />
+**g** - green value of background color <br />
+**b** - blue value of background color <br />
+} 
+<br />
+<br />
+<br />
+##quikIO
+
+**println(String consoleInput)** <br /> { <br />
+**consoleInput** - whatever String you want to print to console <br />
+}<br />
+
+**printList(String[] list)** <br /> { <br />
+**list** - any String list you want to print <br />
+}<br />
+
+**print2DList(String[ ][ ] list)** <br /> { <br />
+**list** - whatever 2D String Array you want to be printed to console 
+<br /> } <br />
+
+**fixListNulls(String[] list, String replaceWith)** 
+<br /> { <br />
+**list** - any list(with nulls) <br />
+**replaceWith** - a string that will replace all nulls in the list
+<br /> } <br />
+
+
+
+
+
+
+
+
+
+
 
 

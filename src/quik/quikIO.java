@@ -42,10 +42,10 @@ public class quikIO {
 	}
 	
 	//from phone repo
-	public void printList(String[] list, String replaceNullWith) {
+	public void printList(String[] list) {
         for(int i = 0; i < list.length; i++) {
             if(list[i] == null) {
-                list[i] = replaceNullWith;
+                list[i] = "null";
             }
             System.out.println(list[i]);
         }
