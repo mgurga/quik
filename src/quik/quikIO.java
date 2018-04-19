@@ -9,6 +9,14 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 public class quikIO {
+	
+	File projectPath;
+	
+	public quikIO(String mainPath) {
+		println(mainPath);
+		projectPath = new File(mainPath);
+	}
+
 	//from phone repo
 	public void println(String print) {
 		System.out.println(print);
@@ -52,10 +60,17 @@ public class quikIO {
 	}
 	
 	
-	public Image imagePath(String path) throws IOException {
+	public Image imagePath(String path) {
 		
-		return ImageIO.read(new File(path));
-		
+		File fileimage = new File(projectPath.toString()+"\\"+path);
+		Image image = null;
+		try {
+			image = ImageIO.read(fileimage);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return image;
 	}
 	
 	public Image imageResize(Image image, int resizex, int resizey) throws IOException {
