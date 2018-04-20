@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Timer;
 
 import javax.imageio.ImageIO;
 
@@ -15,6 +16,8 @@ public class quikIO {
 	public quikIO(String mainPath) {
 		println(mainPath);
 		projectPath = new File(mainPath);
+		
+		
 	}
 
 	//from phone repo
