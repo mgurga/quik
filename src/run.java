@@ -1,10 +1,11 @@
 import java.awt.Image;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.Timer;
 
 import quik.*;
 
-@SuppressWarnings("serial")
-public class run extends quikDraw {
+public class run extends KeyAdapter {
 	static quikDraw qD = new quikDraw();
 	static quikIO qIO = new quikIO(System.getProperty("user.dir") + "\\src");
 	static quikKeyHandler qKH = new quikKeyHandler();
@@ -15,6 +16,7 @@ public class run extends quikDraw {
 	static int y = 100;
 
 	static boolean runBoolean = true;
+	static boolean keyPressed = false;
 	
 	static Image koopa = qIO.imagePath("54.png");
 	
@@ -41,9 +43,11 @@ public class run extends quikDraw {
 	}
 
 	public static void draw() {
-		if(quikKeyHandler.keyPressed) {
-			
-		}
+		
+	}
+	
+	public void keyPressed(KeyEvent e) {
+		System.out.println();
 	}
 	
 	
