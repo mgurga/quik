@@ -6,9 +6,10 @@ import java.util.Timer;
 import quik.*;
 
 public class run extends KeyAdapter {
+	
 	static quikDraw qD = new quikDraw();
 	static quikIO qIO = new quikIO(System.getProperty("user.dir") + "\\src");
-	static quikKeyHandler qKH = new quikKeyHandler();
+	static quikMath qKH = new quikMath();
 
 	static Timer timer = new Timer();
 
@@ -27,6 +28,7 @@ public class run extends KeyAdapter {
 		qD.drawRect(20, 20, 100, 100);
 
 		qD.drawImage(koopa, 100, 100);
+		qD.drawText("hello", 200, 200);
 		startDraw();
 	}
 
@@ -41,14 +43,10 @@ public class run extends KeyAdapter {
 			}
 		}
 	}
-
+	
 	public static void draw() {
 		
 	}
 	
-	public void keyPressed(KeyEvent e) {
-		System.out.println();
-	}
-	
-	
 }
+	

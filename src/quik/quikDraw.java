@@ -2,6 +2,7 @@ package quik;
 
 import java.awt.Canvas;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 
@@ -13,9 +14,12 @@ public class quikDraw extends Canvas
   static JFrame  window;
   static int     height            = -1;
   static int     width             = -1;
-  static int     maxShapes         = 1000000;
   static String  windowName        = "DefaultName";
   static boolean windowInitialized = false;
+  
+  static int     maxShapes         = 1000000;
+  
+  
   static int     lines             = -1;                   
   static int     rects             = -1;
   static Color   backgroundColor   = new Color(207,207,207);
@@ -25,6 +29,13 @@ public class quikDraw extends Canvas
   static Image[] imageArr		   = new Image[maxShapes];
   	static int[] imagex			   = new int[maxShapes];
   	static int[] imagey			   = new int[maxShapes];
+  static int texts				   = -1;
+  	static String[] textData		   = new String[maxShapes];
+  	static int[] textx			   = new int[maxShapes];
+  	static int[] texty			   = new int[maxShapes];
+  	static int textSize			   = 18;
+  	static Font textFont		   = new Font("TimesRoman", Font.PLAIN, textSize);
+  
   //simply means how many lines there are
   //change linePos[][#] as more qualities are added
   //How positions are stored
@@ -63,7 +74,23 @@ public class quikDraw extends Canvas
   {
 	  
   }
-  private void initializeWindow()
+  public static void clearShapes() 
+  {
+	  lines             = -1;                   
+	  rects             = -1;
+	  images 			   = -1;
+	  texts				   = -1;
+	  linePos           = new int[maxShapes][4];
+	  rectPos           = new int[maxShapes][4];
+	  imageArr		   = new Image[maxShapes];
+	  imagex			   = new int[maxShapes];
+	  imagey			   = new int[maxShapes];
+	  textData		   = new String[maxShapes];
+	  textx			   = new int[maxShapes];
+	  texty			   = new int[maxShapes];
+	  
+  }
+  public static void initializeWindow()
   {
 	windowInitialized = true;
     window = new JFrame(windowName);
@@ -100,14 +127,27 @@ public class quikDraw extends Canvas
 	  imagey[images] = y;
   }
   
+  public void drawText(String text, int x, int y) {
+	  texts++;
+	  textData[texts] = text;
+	  textx[texts] = x;
+	  texty[texts] = y;
+  }
+  
+  public void changeFont(int size) {
+	  textSize = size;
+  }
+  
   public void backgroundColor(int r, int g, int b) {
 	  Color newBKColor = new Color(r,g,b);
 	  window.getContentPane().setBackground(newBKColor);
+	  clearShapes();
   }
   
   public void backgroundColor(int rgb) {
 	  Color newBKColor = new Color(rgb,rgb,rgb);
 	  window.getContentPane().setBackground(newBKColor);
+	  clearShapes();
   }
   
   public void paint(Graphics g){
@@ -121,7 +161,10 @@ public class quikDraw extends Canvas
 		for(int i = 0; i < images+1; i++) {
 			g.drawImage(imageArr[i], imagex[i], imagey[i], null);
 		}
-		
+		for(int i = 0; i < texts+1; i++) {
+			g.setFont(textFont);
+			g.drawString(textData[texts], textx[texts] , texty[texts]);
+		}
 	  
 	}
 }
