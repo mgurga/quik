@@ -19,7 +19,6 @@ public class quikDraw extends Canvas
   
   static int     maxShapes         = 1000000;
   
-  
   static int     lines             = -1;                   
   static int     rects             = -1;
   static Color   backgroundColor   = new Color(207,207,207);
@@ -30,12 +29,12 @@ public class quikDraw extends Canvas
   	static int[] imagex			   = new int[maxShapes];
   	static int[] imagey			   = new int[maxShapes];
   static int texts				   = -1;
-  	static String[] textData		   = new String[maxShapes];
+  	static String[] textData	   = new String[maxShapes];
   	static int[] textx			   = new int[maxShapes];
   	static int[] texty			   = new int[maxShapes];
   	static int textSize			   = 18;
   	static Font textFont		   = new Font("TimesRoman", Font.PLAIN, textSize);
-  
+  static boolean runBoolean		   = true;
   //simply means how many lines there are
   //change linePos[][#] as more qualities are added
   //How positions are stored
@@ -72,7 +71,16 @@ public class quikDraw extends Canvas
   }
   public static void main(String[] args)
   {
-	  
+	  while (runBoolean) {
+			draw();
+			try {
+				Thread.sleep(50);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+  }
+  public static void draw() {
   }
   public static void clearShapes() 
   {
@@ -139,19 +147,20 @@ public class quikDraw extends Canvas
   }
   
   public void backgroundColor(int r, int g, int b) {
-	  Color newBKColor = new Color(r,g,b);
-	  window.getContentPane().setBackground(newBKColor);
+	  backgroundColor = new Color(r,g,b);
 	  clearShapes();
   }
   
   public void backgroundColor(int rgb) {
-	  Color newBKColor = new Color(rgb,rgb,rgb);
-	  window.getContentPane().setBackground(newBKColor);
+	  backgroundColor = new Color(rgb,rgb,rgb);
 	  clearShapes();
   }
   
   public void paint(Graphics g){
-	  	
+	  	Color oldColor = g.getColor();
+	  	g.setColor(backgroundColor);
+	  	g.fillRect(0, 0, window.getWidth(), window.getHeight());
+	  	g.setColor(oldColor);
 		for(int i = 0; i < lines+1; i++) {
 			g.drawLine(linePos[i][0], linePos[i][1], linePos[i][2], linePos[i][3]);
 		}
@@ -165,6 +174,5 @@ public class quikDraw extends Canvas
 			g.setFont(textFont);
 			g.drawString(textData[texts], textx[texts] , texty[texts]);
 		}
-	  
 	}
 }

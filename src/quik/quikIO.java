@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.JFrame;
 
 public class quikIO {
 	
@@ -47,6 +48,15 @@ public class quikIO {
 
             countMini++;
         }
+	}
+	
+	public JFrame getJFrame() {
+		if(quikDraw.windowInitialized) {
+			return quikDraw.window;
+		} else {
+			println("Window has not been initalized yet");
+		}
+		return quikDraw.window;		
 	}
 	
 	//from phone repo
