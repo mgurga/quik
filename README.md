@@ -9,7 +9,7 @@ below are all the methods for all the sub sections of quik:<br /><br />
 
 ## quikDraw methods
 **setWindow(int width, int height, String windowName)**<br />
-{<br />
+{ <br />
 **width** - width of the window <br />
 **height** - height of window <br />
 **windowName** - name of the window you program is in <br />
@@ -17,14 +17,14 @@ below are all the methods for all the sub sections of quik:<br /><br />
 <br />
 
 **drawLine(int x1, int y1, int x2, int y2)**<br />
-{<br />
+{ <br />
 **x1 and y1** - the starting x and y positions <br />
 **x2 and y2** - the ending x and y positions <br />
 }
 <br />
 
 **drawRect(int x1, int y1, int width, int height)**<br />
-{<br /> 
+{ <br /> 
 **x1 and y1** - the starting position of the rectangle <br />
 **width** - the width of the rectangle <br />
 **height** - the height of the rectangle <br />
@@ -39,15 +39,43 @@ below are all the methods for all the sub sections of quik:<br /><br />
 <br />
 
 **backgroundColor(int r, int g, int b)**<br />
-{<br />
+{ <br />
 **r** - red value of background color <br />
 **g** - green value of background color <br />
 **b** - blue value of background color <br />
-} 
+}
 <br />
+
+**drawText(String text, int x, int y)**<br />
+{ <br />
+**text** - string to print in window<br />
+**x and y** - x and y position of text<br />
+}
+<br />
+ 
+**changeFontSize(int size)** <br />
+{ <br />
+**size** - the font size of the drawText() method <br />
+}
+<br />
+
+**changeFont(Font newFont)** <br />
+{ <br />
+**newFont** - the font that will be used when drawText() is called
+ <br />
+ refer to the library java.awt.Font for more information on 
+ <br />
+ how to make/import a font. <br />
+}
+<br /> 
+
 <br />
 <br />
 ##quikIO
+
+**getJFrame()** <br /> { <br />
+returns the current jframe
+<br />}<br />
 
 **println(String consoleInput)** <br /> { <br />
 **consoleInput** - whatever String you want to print to console <br />

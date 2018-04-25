@@ -142,8 +142,12 @@ public class quikDraw extends Canvas
 	  texty[texts] = y;
   }
   
-  public void changeFont(int size) {
+  public void changeFontSize(int size) {
 	  textSize = size;
+  }
+  
+  public void changeFont(Font newFont) {
+	  textFont = newFont;
   }
   
   public void backgroundColor(int r, int g, int b) {
