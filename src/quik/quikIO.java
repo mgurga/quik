@@ -1,9 +1,12 @@
 package quik;
 
 import java.awt.Image;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
@@ -89,7 +92,43 @@ public class quikIO {
 		
 	}
 	
+	@SuppressWarnings("resource")
 	public String[] loadTextFile(String path) throws FileNotFoundException {
+		
+		File inFile = new File(projectPath.toString()+"\\"+path);
+		
+        FileInputStream is;
+        BufferedReader reader;
+        final File textFile = new File(String.valueOf(inFile));
+        String[] textFileStr = new String[1000];
+
+        if (textFile.exists()) {
+            try {
+                is = new FileInputStream(textFile);
+                reader = new BufferedReader(new InputStreamReader(is));
+                String line = "";
+                int count = 0;
+
+                while ((line = reader.readLine()) != null) {
+                    textFileStr[count] = line;
+                    count++;
+                }
+                
+                String[] finalList = new String[count];
+                
+                for(int i = 0; i < count; i++) {
+                	finalList[i] = textFileStr[i];
+                }
+                
+                return finalList;
+
+
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+	}
 		return null;
 	}
 	

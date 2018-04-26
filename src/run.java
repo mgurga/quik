@@ -1,6 +1,7 @@
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.FileNotFoundException;
 
 import quik.*;
 
@@ -20,7 +21,7 @@ public class run implements KeyListener {
 	
 	static Image koopa = qIO.imagePath("54.png");
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException {
 		key = new run();
 		
 		// setup
@@ -31,6 +32,9 @@ public class run implements KeyListener {
 		qD.drawImage(koopa, 100, 100);
 		qD.drawText("hello", 200, 200);
 		qIO.getJFrame().addKeyListener(key);
+		
+		qIO.printList(qIO.loadTextFile("example.txt"));
+		
 		startDraw();
 	}
 
