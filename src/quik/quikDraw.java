@@ -16,8 +16,8 @@ public class quikDraw extends Canvas
   static int     width             = -1;
   static String  windowName        = "DefaultName";
   static boolean windowInitialized = false;
-  
   static int     maxShapes         = 1000000;
+  static boolean debug			   = true;
   
   static int     lines             = -1;                   
   static int     rects             = -1;
@@ -117,6 +117,10 @@ public class quikDraw extends Canvas
     linePos[lines][1] = y1;
     linePos[lines][2] = x2;
     linePos[lines][3] = y2;
+    
+    if(debug) {
+    	System.out.println("made a new line at number " + lines);
+    }
   }
   
   public void drawRect(int x1, int y1, int xsize, int ysize)
@@ -126,6 +130,10 @@ public class quikDraw extends Canvas
     rectPos[rects][1] = y1;
     rectPos[rects][2] = xsize;
     rectPos[rects][3] = ysize;
+    
+    if(debug) {
+    	System.out.println("made a new rect at number " + rects);
+    }
   }
   
   public void drawImage(Image image, int x, int y) {
@@ -133,6 +141,10 @@ public class quikDraw extends Canvas
 	  imageArr[images] = image;
 	  imagex[images] = x;
 	  imagey[images] = y;
+	  
+	  if(debug) {
+	    	System.out.println("made a new image at number " + images);
+	    }
   }
   
   public void drawText(String text, int x, int y) {
@@ -140,6 +152,10 @@ public class quikDraw extends Canvas
 	  textData[texts] = text;
 	  textx[texts] = x;
 	  texty[texts] = y;
+	  
+	  if(debug) {
+	    	System.out.println("made a new text at number " + texts);
+	    }
   }
   
   public void changeFontSize(int size) {
