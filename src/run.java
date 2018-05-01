@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -41,6 +42,8 @@ public class run implements KeyListener {
 	public static void startDraw() {
 		while (runBoolean) {
 			draw();
+			qIO.getJFrame().revalidate();
+			qIO.getJFrame().repaint();
 			try {
 				Thread.sleep(10);
 			} catch (InterruptedException e) {
@@ -51,8 +54,9 @@ public class run implements KeyListener {
 	}
 	
 	public static void draw() {
-		qD.drawText(playerx + "", 10, 10);
-		qD.drawText(playery + "", 10, 20);
+		qD.drawText( "hi", playerx, 10);
+		playerx++;
+		
 	}
 
 	@Override

@@ -2,6 +2,8 @@ package quik;
 
 import java.awt.Canvas;
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -81,6 +83,7 @@ public class quikDraw extends Canvas
 		}
   }
   public static void draw() {
+	  
   }
   public static void clearShapes() 
   {
@@ -106,7 +109,7 @@ public class quikDraw extends Canvas
     window.setSize(quikDraw.height, quikDraw.width);
     window.add(canvas);
     window.setVisible(true);
-    window.setResizable(false);
+    window.setResizable(true);
     window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     window.pack();
   }
@@ -155,6 +158,7 @@ public class quikDraw extends Canvas
 	  
 	  if(debug) {
 	    	System.out.println("made a new text at number " + texts);
+	    	System.out.println("with string: " + texts + "  at x: " + x);
 	    }
   }
   
@@ -177,6 +181,7 @@ public class quikDraw extends Canvas
   }
   
   public void paint(Graphics g){
+	  if(windowInitialized) {
 	  	Color oldColor = g.getColor();
 	  	g.setColor(backgroundColor);
 	  	g.fillRect(0, 0, window.getWidth(), window.getHeight());
@@ -190,9 +195,14 @@ public class quikDraw extends Canvas
 		for(int i = 0; i < images+1; i++) {
 			g.drawImage(imageArr[i], imagex[i], imagey[i], null);
 		}
+		g.setFont(textFont);
 		for(int i = 0; i < texts+1; i++) {
-			g.setFont(textFont);
-			g.drawString(textData[texts], textx[texts] , texty[texts]);
+			g.drawString(textData[i], textx[i] , texty[i]);
 		}
+		quikDraw.height+=5;
+	    window.setSize(quikDraw.height, quikDraw.width);
+	    window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	    quikDraw.height-=5;
+	  }
 	}
 }
