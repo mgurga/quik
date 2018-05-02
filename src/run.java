@@ -33,6 +33,7 @@ public class run implements KeyListener {
 		qD.drawImage(koopa, 100, 100);
 		qD.drawText("hello", 200, 200);
 		qIO.getJFrame().addKeyListener(key);
+		qIO.getJFrame().repaint();
 		
 		qIO.printList(qIO.loadTextFile("example.txt"));
 		
@@ -41,9 +42,8 @@ public class run implements KeyListener {
 
 	public static void startDraw() {
 		while (runBoolean) {
+			
 			draw();
-			qIO.getJFrame().revalidate();
-			qIO.getJFrame().repaint();
 			try {
 				Thread.sleep(10);
 			} catch (InterruptedException e) {

@@ -9,6 +9,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 
 import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 
 @SuppressWarnings("serial")
 public class quikDraw extends Canvas
@@ -124,6 +125,7 @@ public class quikDraw extends Canvas
     if(debug) {
     	System.out.println("made a new line at number " + lines);
     }
+    addedNewShape();
   }
   
   public void drawRect(int x1, int y1, int xsize, int ysize)
@@ -137,6 +139,7 @@ public class quikDraw extends Canvas
     if(debug) {
     	System.out.println("made a new rect at number " + rects);
     }
+    addedNewShape();
   }
   
   public void drawImage(Image image, int x, int y) {
@@ -148,6 +151,7 @@ public class quikDraw extends Canvas
 	  if(debug) {
 	    	System.out.println("made a new image at number " + images);
 	    }
+	  addedNewShape();
   }
   
   public void drawText(String text, int x, int y) {
@@ -160,6 +164,7 @@ public class quikDraw extends Canvas
 	    	System.out.println("made a new text at number " + texts);
 	    	System.out.println("with string: " + texts + "  at x: " + x);
 	    }
+	  addedNewShape();
   }
   
   public void changeFontSize(int size) {
@@ -173,11 +178,18 @@ public class quikDraw extends Canvas
   public void backgroundColor(int r, int g, int b) {
 	  backgroundColor = new Color(r,g,b);
 	  clearShapes();
+	  addedNewShape();
   }
   
   public void backgroundColor(int rgb) {
 	  backgroundColor = new Color(rgb,rgb,rgb);
 	  clearShapes();
+	  addedNewShape();
+  }
+  
+  public void addedNewShape() {
+	  revalidate();
+	  repaint();
   }
   
   public void paint(Graphics g){
@@ -199,10 +211,9 @@ public class quikDraw extends Canvas
 		for(int i = 0; i < texts+1; i++) {
 			g.drawString(textData[i], textx[i] , texty[i]);
 		}
-		quikDraw.height+=5;
-	    window.setSize(quikDraw.height, quikDraw.width);
-	    window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	    quikDraw.height-=5;
+		
+		addedNewShape();
+		
 	  }
 	}
 }
