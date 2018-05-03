@@ -17,6 +17,7 @@ public class run implements KeyListener {
 
 	static boolean runBoolean = true;
 	static boolean keyPressed = false;
+	static boolean[] keys = new boolean[222];
 	
 	static run key;
 	
@@ -28,68 +29,39 @@ public class run implements KeyListener {
 		// setup
 		qD.backgroundColor(100, 0, 0);
 		qD.setWindow(800, 600, "quik");
-		qD.drawLine(50, 100, 150, 100);
-		qD.drawRect(20, 20, 100, 100);
-		qD.drawImage(koopa, 100, 100);
-		qD.drawText("hello", 200, 200);
 		qIO.getJFrame().addKeyListener(key);
-		qIO.getJFrame().repaint();
-		
-		qIO.printList(qIO.loadTextFile("example.txt"));
 		
 		startDraw();
 	}
 
 	public static void startDraw() {
 		while (runBoolean) {
-			
 			draw();
 			try {
-				Thread.sleep(10);
+				Thread.sleep(1);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 	}
 	
 	public static void draw() {
-		qD.drawText( "hi", playerx, 10);
-		playerx++;
+		qD.drawRect(playerx, playery, 20, 20);
 		
 	}
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		qIO.println(e.getKeyCode() + "");
-		if(e.getKeyCode() == KeyEvent.VK_UP) {
-			playery++;
-			qIO.println("up");
-		}
-		if(e.getKeyCode() == KeyEvent.VK_DOWN) {
-			playery--;
-			qIO.println("down");
-		}
-		if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
-			playerx++;
-			qIO.println("right");
-		}
-		if(e.getKeyCode() == KeyEvent.VK_LEFT) {
-			playerx--;
-			qIO.println("left");
-		}
-		
+		keys[e.getKeyCode()] = true;
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
+		keys[e.getKeyCode()] = false;
 	}
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 	

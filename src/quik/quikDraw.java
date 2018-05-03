@@ -2,14 +2,11 @@ package quik;
 
 import java.awt.Canvas;
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 
 import javax.swing.JFrame;
-import javax.swing.SwingUtilities;
 
 @SuppressWarnings("serial")
 public class quikDraw extends Canvas
@@ -188,16 +185,19 @@ public class quikDraw extends Canvas
   }
   
   public void addedNewShape() {
-	  revalidate();
-	  repaint();
+	  
   }
   
   public void paint(Graphics g){
 	  if(windowInitialized) {
+		
+		
 	  	Color oldColor = g.getColor();
 	  	g.setColor(backgroundColor);
 	  	g.fillRect(0, 0, window.getWidth(), window.getHeight());
 	  	g.setColor(oldColor);
+	  	
+	  	
 		for(int i = 0; i < lines+1; i++) {
 			g.drawLine(linePos[i][0], linePos[i][1], linePos[i][2], linePos[i][3]);
 		}
@@ -212,7 +212,10 @@ public class quikDraw extends Canvas
 			g.drawString(textData[i], textx[i] , texty[i]);
 		}
 		
-		addedNewShape();
+		clearShapes();
+		
+		revalidate();
+		repaint();
 		
 	  }
 	}
