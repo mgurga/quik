@@ -8,13 +8,15 @@ import quik.*;
 
 public class run implements KeyListener {
 	
-	static quikDraw qD = new quikDraw();
+	static quikDraw qD = new quikDraw(true);
 	static quikIO qIO = new quikIO(System.getProperty("user.dir") + "\\src");
 	static quikMath qM = new quikMath();
 
 	static int playerx = 100;
 	static int playery = 100;
 
+	static int speed = 10;
+	
 	static boolean runBoolean = true;
 	static boolean keyPressed = false;
 	static boolean[] keys = new boolean[222];
@@ -27,8 +29,8 @@ public class run implements KeyListener {
 		key = new run();
 		
 		// setup
-		qD.backgroundColor(100, 0, 0);
 		qD.setWindow(800, 600, "quik");
+		qD.backgroundColor(100, 10, 13);
 		qIO.getJFrame().addKeyListener(key);
 		
 		startDraw();
@@ -47,7 +49,29 @@ public class run implements KeyListener {
 	
 	public static void draw() {
 		qD.drawRect(playerx, playery, 20, 20);
+		qD.drawText("y: "+playerx, 0, 10);
+		qD.drawText("x: "+playery, 0, 10);
 		
+		
+		if(keys[39] == true) {
+			playerx+=speed;
+			qIO.println("right");
+		}
+		
+		if(keys[37] == true) {
+			playerx-=speed;
+			qIO.println("left");
+		}
+		
+		if(keys[38] == true) {
+			playery+=speed;
+			qIO.println("up");
+		}
+		
+		if(keys[40] == true) {
+			playery-=speed;
+			qIO.println("down");
+		}
 	}
 
 	@Override

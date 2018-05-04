@@ -17,7 +17,7 @@ public class quikDraw extends Canvas
   static String  windowName        = "DefaultName";
   static boolean windowInitialized = false;
   static int     maxShapes         = 1000000;
-  static boolean debug			   = true;
+  static boolean debug			   = false;
   
   static int     lines             = -1;                   
   static int     rects             = -1;
@@ -34,7 +34,7 @@ public class quikDraw extends Canvas
   	static int[] texty			   = new int[maxShapes];
   	static int textSize			   = 18;
   	static Font textFont		   = new Font("TimesRoman", Font.PLAIN, textSize);
-  static boolean runBoolean		   = true;
+  static boolean runBoolean		   = false;
   //simply means how many lines there are
   //change linePos[][#] as more qualities are added
   //How positions are stored
@@ -45,6 +45,11 @@ public class quikDraw extends Canvas
   //if $ = 2 means x2
   //if $ = 3 means y2
   //if $ = x and so on as new things get added
+  
+  public quikDraw(boolean debugBool) {
+	  debug = debugBool;
+	}
+  
   public void setWindow(int height, int width, String name)
   {
     if (windowInitialized == false)
@@ -103,7 +108,7 @@ public class quikDraw extends Canvas
   {
 	windowInitialized = true;
     window = new JFrame(windowName);
-    Canvas canvas = new quikDraw();
+    Canvas canvas = new quikDraw(debug);
     window.setSize(quikDraw.height, quikDraw.width);
     window.add(canvas);
     window.setVisible(true);
@@ -176,12 +181,22 @@ public class quikDraw extends Canvas
 	  backgroundColor = new Color(r,g,b);
 	  clearShapes();
 	  addedNewShape();
+	  
+	  if(debug) {
+		  System.out.println(backgroundColor.getRed()+", "
+	  +backgroundColor.getGreen()+", "+backgroundColor.getBlue()+", ");
+	  }
   }
   
   public void backgroundColor(int rgb) {
 	  backgroundColor = new Color(rgb,rgb,rgb);
 	  clearShapes();
 	  addedNewShape();
+	  
+	  if(debug) {
+		  System.out.println(backgroundColor.getRed()+", "
+	  +backgroundColor.getGreen()+", "+backgroundColor.getBlue()+", ");
+	  }
   }
   
   public void addedNewShape() {
@@ -190,7 +205,6 @@ public class quikDraw extends Canvas
   
   public void paint(Graphics g){
 	  if(windowInitialized) {
-		
 		
 	  	Color oldColor = g.getColor();
 	  	g.setColor(backgroundColor);
