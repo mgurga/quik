@@ -47,11 +47,14 @@ public class run implements KeyListener {
 		}
 	}
 	
+	
+	
 	public static void draw() {
 		qD.drawRect(playerx, playery, 20, 20);
 		qD.drawText("y: "+playerx, 0, 10);
 		qD.drawText("x: "+playery, 0, 10);
-		
+	
+		playerx++;
 		
 		if(keys[39] == true) {
 			playerx+=speed;

@@ -6,7 +6,9 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 
+import javax.security.auth.Refreshable;
 import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 
 @SuppressWarnings("serial")
 public class quikDraw extends Canvas
@@ -184,7 +186,8 @@ public class quikDraw extends Canvas
 	  
 	  if(debug) {
 		  System.out.println(backgroundColor.getRed()+", "
-	  +backgroundColor.getGreen()+", "+backgroundColor.getBlue()+", ");
+	  +backgroundColor.getGreen()+", "
+	  +backgroundColor.getBlue()+", ");
 	  }
   }
   
@@ -203,34 +206,41 @@ public class quikDraw extends Canvas
 	  
   }
   
-  public void paint(Graphics g){
+  public void paintComponent(Graphics g) {
 	  if(windowInitialized) {
-		
-	  	Color oldColor = g.getColor();
-	  	g.setColor(backgroundColor);
-	  	g.fillRect(0, 0, window.getWidth(), window.getHeight());
-	  	g.setColor(oldColor);
-	  	
-	  	
-		for(int i = 0; i < lines+1; i++) {
-			g.drawLine(linePos[i][0], linePos[i][1], linePos[i][2], linePos[i][3]);
-		}
-		for(int i = 0; i < rects+1; i++) {
-			g.drawRect(rectPos[i][0], rectPos[i][1], rectPos[i][2], rectPos[i][3]);
-		}
-		for(int i = 0; i < images+1; i++) {
-			g.drawImage(imageArr[i], imagex[i], imagey[i], null);
-		}
-		g.setFont(textFont);
-		for(int i = 0; i < texts+1; i++) {
-			g.drawString(textData[i], textx[i] , texty[i]);
-		}
-		
-		clearShapes();
-		
-		revalidate();
-		repaint();
-		
-	  }
+			
+		  	Color oldColor = g.getColor();
+		  	g.setColor(backgroundColor);
+		  	g.fillRect(0, 0, window.getWidth(), window.getHeight());
+		  	g.setColor(oldColor);
+		  	
+			for(int i = 0; i < lines+1; i++) {
+				g.drawLine(linePos[i][0], linePos[i][1], linePos[i][2], linePos[i][3]);
+			}
+			for(int i = 0; i < rects+1; i++) {
+				g.drawRect(rectPos[i][0], rectPos[i][1], rectPos[i][2], rectPos[i][3]);
+			}
+			for(int i = 0; i < images+1; i++) {
+				g.drawImage(imageArr[i], imagex[i], imagey[i], null);
+			}
+			g.setFont(textFont);
+			for(int i = 0; i < texts+1; i++) {
+				g.drawString(textData[i], textx[i] , texty[i]);
+			}
+			
+			
+			clearShapes();
+			
+			window.invalidate();
+			window.validate();
+			window.repaint();
+			
+			repaint();
+			
+		  }
+  }
+  
+  public void paint(Graphics g){
+	  
 	}
 }
